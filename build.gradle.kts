@@ -14,6 +14,15 @@ allprojects {
     }
 }
 
+tasks.register<Copy>("copyTelegramBotJar") {
+    from("telegram-bot/build/libs")
+    into("build/libs")
+}
+
+tasks.register("stage") {
+    dependsOn("telegram-bot:build", "copyTelegramBotJar")
+}
+
 dependencies {
     testImplementation(kotlin("test-junit5"))
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
