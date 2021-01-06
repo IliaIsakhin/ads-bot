@@ -17,6 +17,7 @@ allprojects {
 tasks.register<Copy>("copyTelegramBotJar") {
     from("telegram-bot/build/libs")
     into("build/libs")
+    mustRunAfter("telegram-bot:build")
 }
 
 tasks.register("stage") {
